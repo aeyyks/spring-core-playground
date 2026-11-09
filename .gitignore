@@ -1,16 +1,11 @@
-# Compiled class file
+# ==========================================
+# Сборка и компиляция (Java / Spring Boot)
+# ==========================================
 *.class
-
-# Log file
 *.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
+*.pfx
+*.txt
 .mtj.tmp/
-
-# Package Files #
 *.jar
 *.war
 *.nar
@@ -19,6 +14,103 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# Директории сборщиков
+target/
+bin/
+build/
+out/
+.gradle/
+
+# ==========================================
+# Локальные настройки и секреты (Важно!)
+# ==========================================
+# Игнорируем файлы, где могут храниться пароли, токены и приватные ключи
+*.properties
+*.yml
+*.yaml
+
+# Исключение: разрешаем коммитить дефолтные файлы конфигурации,
+# если вы используете подход с application-local.properties для разработки.
+!**/src/main/resources/application.properties
+!**/src/main/resources/application.yml
+!**/src/main/resources/application.yaml
+
+# Локальные профили и секреты
+application-local.*
+application-dev.*
+.env
+.env.*
+
+# ==========================================
+# Настройки IDE
+# ==========================================
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+/out/
+# Если используете встроенный в IDEA сборщик, а не Maven/Gradle
+gen/
+
+### Eclipse ###
+.metadata
+.classpath
+.project
+.settings/
+*.launch
+.factorypath
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+# ==========================================
+# Локальные обертки сборщиков (Wrapper)
+# ==========================================
+# По стандарту эти файлы РЕКОМЕНДУЕТСЯ коммитить, чтобы проект собирался у всех одинаково.
+# Раскомментируйте строчки ниже, только если вы ТОЧНО хотите их скрыть.
+# !gradle/wrapper/gradle-wrapper.jar
+# !gradlew
+# !gradlew.bat
+# !.mvn/wrapper/maven-wrapper.jar
+# !mvnw
+# !mvnw.cmd
+
+# ==========================================
+# Операционные системы и логи
+# ==========================================
+# Настройки папок macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Настройки папок Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+
+# Логи приложения
+logs/
+*.log
+      ```
+
+### 💡 Полезные советы:
+1. **Секреты и пароли:** Никогда не отправляйте в репозиторий реальные пароли от баз данных или API-ключи. Храните дефолтную структуру в `application.yml`, а все секреты выносите в переменные окружения или локальный файл `application-local.yml` (который благодаря этому шаблону заигнорирован).
+2. **Если файлы уже попали в Git:** Помните, что `.gitignore` работает только для новых (untracked) файлов. Если вы уже успели закоммитить папку `.idea/` или `target/`, сначала удалите их из индекса Git командой:
+   ```bash
+   git rm -r --cached .idea/
+   git rm -r --cached target/
+   ```
+   После этого сделайте коммит, и правила начнут действовать.
+
+Вы также можете сгенерировать конфигурацию под конкретный стек технологий на специализированном сервисе [gitignore.io](https://toptal.com "Генератор gitignore файлов").
