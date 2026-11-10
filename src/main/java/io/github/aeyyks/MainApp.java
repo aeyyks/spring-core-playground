@@ -8,11 +8,18 @@ public class MainApp {
         // 1. Инициализация и запуск контекста Spring
         try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class)) {
 
-            // 2. Получение бина из контекста
-            MyService myService = context.getBean(MyService.class);
+//            // 2. Получение бина из контекста
+//            MyService myService = context.getBean(MyService.class);
+//
+//            // 3. Использование бизнес-логики
+//            myService.doSomething();
 
-            // 3. Использование бизнес-логики
-            myService.doSomething();
+            System.out.println("--- Запрашиваем бин первый раз ---");
+            AdaptiveContextService service1 = context.getBean(AdaptiveContextService.class);
+            service1.doSomething();
+            System.out.println("--- Запрашиваем бин второй раз ---");
+            AdaptiveContextService service2 = context.getBean(AdaptiveContextService.class);
+            service2.doSomething();
         }
         // Блок try-with-resources автоматически закроет контекст при завершении работы приложения
     }

@@ -13,10 +13,14 @@
     </appender>
 
     <!-- Повышаем уровень для всего Spring до WARN (скроет INFO логи о запуске) -->
-    <logger name="org.springframework" level="WARN" />
+    <logger name="org.springframework" level="WARN"/>
+
+    <!--    Включаем детальный лог для парсера конфигураций и фабрики бинов-->
+<!--    <logger name="org.springframework.context.annotation.ConfigurationClassPostProcessor" level="TRACE"/>-->
+<!--    <logger name="org.springframework.beans.factory.support.DefaultListableBeanFactory" level="DEBUG"/>-->
 
     <!-- Корневой уровень для всего остального приложения-->
     <root level="INFO">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
