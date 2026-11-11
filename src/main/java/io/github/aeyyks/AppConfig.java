@@ -1,8 +1,8 @@
 package io.github.aeyyks;
 
-import io.github.aeyyks.bfpp.FirstBDRPP;
+import io.github.aeyyks.bfpp.bdrpp.FirstBDRPP;
 import io.github.aeyyks.bfpp.MyBFPP;
-import io.github.aeyyks.bfpp.SecondBDRPP;
+import io.github.aeyyks.bfpp.bdrpp.SecondBDRPP;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

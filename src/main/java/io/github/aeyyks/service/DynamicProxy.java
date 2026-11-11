@@ -1,5 +1,5 @@
 package io.github.aeyyks.service;
 
-public interface Ghost {
+public interface DynamicProxy {
     String hola();
 }

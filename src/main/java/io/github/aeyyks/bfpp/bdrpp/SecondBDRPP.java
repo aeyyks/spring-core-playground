@@ -1,6 +1,6 @@
-package io.github.aeyyks.bfpp;
+package io.github.aeyyks.bfpp.bdrpp;
 
-import io.github.aeyyks.service.Ghost;
+import io.github.aeyyks.service.DynamicProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -22,12 +22,12 @@ public class SecondBDRPP implements BeanDefinitionRegistryPostProcessor {
         log.info("Второй BDRPP {}: Начало работы", this.getClass().getSimpleName());
 
         RootBeanDefinition bd = new RootBeanDefinition();
-        bd.setTargetType(Ghost.class);
+        bd.setTargetType(DynamicProxy.class);
 
         Random random = new Random();
         bd.setInstanceSupplier(() -> Proxy.newProxyInstance(
-                Ghost.class.getClassLoader(),
-                new Class<?>[]{Ghost.class},
+                DynamicProxy.class.getClassLoader(),
+                new Class<?>[]{DynamicProxy.class},
                 (proxy, method, args) -> {
                     if ("hola".equals(method.getName())) {
                         return "Привет, " + random.nextInt(100);

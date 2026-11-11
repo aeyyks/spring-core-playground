@@ -1,4 +1,4 @@
-package io.github.aeyyks.bfpp;
+package io.github.aeyyks.bfpp.bdrpp;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
