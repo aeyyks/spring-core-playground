@@ -1,26 +1,16 @@
 package io.github.aeyyks;
 
+import io.github.aeyyks.service.Ghost;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MainApp {
     public static void main(String[] args) {
-
-        // 1. Инициализация и запуск контекста Spring
         try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class)) {
-
-//            // 2. Получение бина из контекста
-//            MyService myService = context.getBean(MyService.class);
-//
-//            // 3. Использование бизнес-логики
-//            myService.doSomething();
-
-            System.out.println("--- Запрашиваем бин первый раз ---");
-            AdaptiveContextService service1 = context.getBean(AdaptiveContextService.class);
-            service1.doSomething();
-            System.out.println("--- Запрашиваем бин второй раз ---");
-            AdaptiveContextService service2 = context.getBean(AdaptiveContextService.class);
-            service2.doSomething();
+            System.out.println("-------------------- APP --------------------");
+            Ghost service1 = context.getBean(Ghost.class);
+            System.out.println(service1.hola());
+            Ghost service2 = context.getBean(Ghost.class);
+            System.out.println(service2.hola());
         }
-        // Блок try-with-resources автоматически закроет контекст при завершении работы приложения
     }
 }

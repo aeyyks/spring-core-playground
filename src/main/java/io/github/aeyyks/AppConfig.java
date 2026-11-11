@@ -1,6 +1,8 @@
 package io.github.aeyyks;
 
-import com.example.demo.config.MyMetadataLoggingProcessor;
+import io.github.aeyyks.bfpp.FirstBDRPP;
+import io.github.aeyyks.bfpp.MyBFPP;
+import io.github.aeyyks.bfpp.SecondBDRPP;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -9,15 +11,19 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = "io.github.aeyyks")
 public class AppConfig {
 
-    // КРИТИЧЕСКИ ВАЖНО: метод должен быть static!
-    // Это позволяет Spring зарегистрировать BFPP до парсинга остальной части конфигурации
-//    @Bean
-//    public static MyMetadataLoggingProcessor metadataLoggingProcessor() {
-//        return new MyMetadataLoggingProcessor();
-//    }
+    @Bean
+    public static FirstBDRPP first() {
+        return new FirstBDRPP();
+    }
 
     @Bean
-    public static ScopeMutatorBeanFactoryPostProcessor scopeMutatorBeanFactoryPostProcessor() {
-        return new ScopeMutatorBeanFactoryPostProcessor();
+    public static SecondBDRPP second() {
+        return new SecondBDRPP();
+    }
+
+
+    @Bean
+    public static MyBFPP finalAct() {
+        return new MyBFPP();
     }
 }
