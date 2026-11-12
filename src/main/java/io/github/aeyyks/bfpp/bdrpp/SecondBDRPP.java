@@ -19,7 +19,7 @@ public class SecondBDRPP implements BeanDefinitionRegistryPostProcessor {
 
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
-        log.info("Второй BDRPP {}: Начало работы", this.getClass().getSimpleName());
+        log.debug("Второй BDRPP {}: Начало работы", this.getClass().getSimpleName());
 
         RootBeanDefinition bd = new RootBeanDefinition();
         bd.setTargetType(DynamicProxy.class);
@@ -37,15 +37,15 @@ public class SecondBDRPP implements BeanDefinitionRegistryPostProcessor {
         ));
         registry.registerBeanDefinition("holaBean", bd);
 
-        log.info("кол-во BeanDefinition: {}", registry.getBeanDefinitionCount());
-        log.info("Зарегистрированные имена: {}", Arrays.toString(registry.getBeanDefinitionNames()));
+        log.debug("кол-во BeanDefinition: {}", registry.getBeanDefinitionCount());
+        log.debug("Зарегистрированные имена: {}", Arrays.toString(registry.getBeanDefinitionNames()));
 
-        log.info("Второй BDRPP {}: Конец работы", this.getClass().getSimpleName());
-        log.info("--------------- КОНЕЦ РАБОТЫ BDRPP ---------------");
+        log.debug("Второй BDRPP {}: Конец работы", this.getClass().getSimpleName());
+        log.debug("--------------- КОНЕЦ РАБОТЫ BDRPP ---------------");
     }
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        log.info("вызов {}", this.getClass().getSimpleName());
+        log.debug("вызов {}", this.getClass().getSimpleName());
     }
 }

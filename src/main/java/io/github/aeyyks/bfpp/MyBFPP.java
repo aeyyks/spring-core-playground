@@ -13,13 +13,13 @@ public class MyBFPP implements BeanFactoryPostProcessor {
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        log.info("начало работы {}", this.getClass().getSimpleName());
+        log.debug("начало работы {}", this.getClass().getSimpleName());
         if (beanFactory.containsBeanDefinition("holaBean")) {
             BeanDefinition bd = beanFactory.getBeanDefinition("holaBean");
 
-            log.info("Старый Scope: " + bd.getScope());
+            log.debug("Старый Scope: " + bd.getScope());
             bd.setScope(BeanDefinition.SCOPE_PROTOTYPE);
-            log.info("Новый Scope: " + bd.getScope());
+            log.debug("Новый Scope: " + bd.getScope());
         }
     }
 }
