@@ -1,6 +1,6 @@
 package io.github.aeyyks;
 
-import io.github.aeyyks.service.DynamicProxy;
+import io.github.aeyyks.config.AppConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MainApp {
