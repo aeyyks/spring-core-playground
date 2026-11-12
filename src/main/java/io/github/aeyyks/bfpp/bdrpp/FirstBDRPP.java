@@ -16,24 +16,24 @@ public class FirstBDRPP implements BeanDefinitionRegistryPostProcessor, Priority
 
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
-        log.info("--------------- ЭТАП РАБОТЫ BDRPP ---------------");
-        log.info("Первый BDRPP {}: Начало работы", this.getClass().getSimpleName());
-        log.info("кол-во BeanDefinition: {}", registry.getBeanDefinitionCount());
-        log.info("Зарегистрированные имена: {}", Arrays.toString(registry.getBeanDefinitionNames()));
-        log.info("Первый BDRPP {}: Конец работы", this.getClass().getSimpleName());
+        log.debug("--------------- ЭТАП РАБОТЫ BDRPP ---------------");
+        log.debug("Первый BDRPP {}: Начало работы", this.getClass().getSimpleName());
+        log.debug("кол-во BeanDefinition: {}", registry.getBeanDefinitionCount());
+        log.debug("Зарегистрированные имена: {}", Arrays.toString(registry.getBeanDefinitionNames()));
+        log.debug("Первый BDRPP {}: Конец работы", this.getClass().getSimpleName());
     }
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        log.info("--------------- ЭТАП РАБОТЫ BFPP ---------------");
-        log.info("Первый BFPP {}: Начало работы", this.getClass().getSimpleName());
+        log.debug("--------------- ЭТАП РАБОТЫ BFPP ---------------");
+        log.debug("Первый BFPP {}: Начало работы", this.getClass().getSimpleName());
 
-        log.info("Финальное количество BeanDefinitions: {}", beanFactory.getBeanDefinitionCount());
+        log.debug("Финальное количество BeanDefinitions: {}", beanFactory.getBeanDefinitionCount());
         if (beanFactory.containsBeanDefinition("myService")) {
-            log.info("Scope для myService: {}", beanFactory.getBeanDefinition("myService").getScope());
+            log.debug("Scope для myService: {}", beanFactory.getBeanDefinition("myService").getScope());
         }
 
-        log.info("Первый BFPP {}: Конец работы", this.getClass().getSimpleName());
+        log.debug("Первый BFPP {}: Конец работы", this.getClass().getSimpleName());
     }
 
     @Override
