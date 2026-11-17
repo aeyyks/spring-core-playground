@@ -11,7 +11,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @ComponentScan(basePackages = "io.github.aeyyks")
-@Import({BFPPConfig.class, TransactionManagerConfig.class, AsyncConfig.class, BPPConfig.class})
+@Import({BFPPConfig.class, TransactionManagerConfig.class, AsyncConfig.class, BPPConfig.class, AsyncConfig.class})
 @PropertySource("classpath:application.properties")
 public class AppConfig {
 }
