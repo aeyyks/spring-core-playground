@@ -1,6 +1,6 @@
-package io.github.aeyyks.bfpp.bdrpp;
+package io.github.aeyyks.bfpp.processor;
 
-import io.github.aeyyks.service.DynamicProxy;
+import io.github.aeyyks.bfpp.model.DynamicProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -46,6 +46,7 @@ public class SecondBDRPP implements BeanDefinitionRegistryPostProcessor {
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        log.info("вызов {}", this.getClass().getSimpleName());
+        log.info("Первый BFPP {}: Начало работы", this.getClass().getSimpleName());
+        log.info("Второй BFPP {}: Конец работы", this.getClass().getSimpleName());
     }
 }

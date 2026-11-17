@@ -1,4 +1,4 @@
-package io.github.aeyyks.bfpp;
+package io.github.aeyyks.bfpp.processor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +13,7 @@ public class MyBFPP implements BeanFactoryPostProcessor {
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        log.info("начало работы {}", this.getClass().getSimpleName());
+        log.info("My BFPP {}: Начало работы", this.getClass().getSimpleName());
         if (beanFactory.containsBeanDefinition("holaBean")) {
             BeanDefinition bd = beanFactory.getBeanDefinition("holaBean");
 
@@ -21,5 +21,6 @@ public class MyBFPP implements BeanFactoryPostProcessor {
             bd.setScope(BeanDefinition.SCOPE_PROTOTYPE);
             log.info("Новый Scope: " + bd.getScope());
         }
+        log.info("My BFPP {}: Конец работы", this.getClass().getSimpleName());
     }
 }

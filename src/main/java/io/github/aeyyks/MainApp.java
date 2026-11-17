@@ -1,16 +1,16 @@
 package io.github.aeyyks;
 
-import io.github.aeyyks.service.DynamicProxy;
+import io.github.aeyyks.config.AppConfig;
+import io.github.aeyyks.config.condition.AppRunner;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import java.util.Map;
 
 public class MainApp {
     public static void main(String[] args) {
         try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class)) {
-            System.out.println("-------------------- APP --------------------");
-            DynamicProxy service1 = context.getBean(DynamicProxy.class);
-            System.out.println(service1.hola());
-            DynamicProxy service2 = context.getBean(DynamicProxy.class);
-            System.out.println(service2.hola());
+            Map<String, AppRunner> runners = context.getBeansOfType(AppRunner.class);
+            runners.values().forEach(AppRunner::run);
         }
     }
 }

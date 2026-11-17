@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration
+        scan="false" scanPeriod="1 minute"
         debug="false"
         xmlns="http://ch.qos.logback/xml/ns/logback"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://ch.qos.logback/xml/ns/logback https://raw.githubusercontent.com/enricopulatzo/logback-XSD/master/src/main/xsd/logback.xsd">
+
+    <property resource="log-config.properties"/>
 
     <!-- Настройка вывода в консоль -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -12,12 +15,15 @@
         </encoder>
     </appender>
 
-    <!-- Повышаем уровень для всего Spring до WARN (скроет INFO логи о запуске) -->
-    <logger name="org.springframework" level="WARN"/>
+    <!-- Управление логированием целых пакетов через переменные -->
+    <logger name="io.github.aeyyks.bfpp" level="${log.level.bfpp:-INFO}"/>
+    <logger name="io.github.aeyyks.event" level="${log.level.event:-INFO}"/>
 
-    <!--    Включаем детальный лог для парсера конфигураций и фабрики бинов-->
-<!--    <logger name="org.springframework.context.annotation.ConfigurationClassPostProcessor" level="TRACE"/>-->
-<!--    <logger name="org.springframework.beans.factory.support.DefaultListableBeanFactory" level="DEBUG"/>-->
+
+    <!-- Системные логи Spring из properties -->
+    <logger name="org.springframework" level="${log.spring.core:-WARN}"/>
+    <logger name="org.springframework.context.annotation.ConfigurationClassPostProcessor" level="${log.spring.config.parser:-INFO}"/>
+    <logger name="org.springframework.beans.factory.support.DefaultListableBeanFactory" level="${log.spring.bean.factory:-INFO}"/>
 
     <!-- Корневой уровень для всего остального приложения-->
     <root level="INFO">
