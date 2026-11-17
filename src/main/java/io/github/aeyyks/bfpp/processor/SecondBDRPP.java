@@ -1,6 +1,6 @@
-package io.github.aeyyks.bfpp.bdrpp;
+package io.github.aeyyks.bfpp.processor;
 
-import io.github.aeyyks.service.DynamicProxy;
+import io.github.aeyyks.bfpp.model.DynamicProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -19,7 +19,7 @@ public class SecondBDRPP implements BeanDefinitionRegistryPostProcessor {
 
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
-        log.debug("Второй BDRPP {}: Начало работы", this.getClass().getSimpleName());
+        log.info("Второй BDRPP {}: Начало работы", this.getClass().getSimpleName());
 
         RootBeanDefinition bd = new RootBeanDefinition();
         bd.setTargetType(DynamicProxy.class);
@@ -37,15 +37,16 @@ public class SecondBDRPP implements BeanDefinitionRegistryPostProcessor {
         ));
         registry.registerBeanDefinition("holaBean", bd);
 
-        log.debug("кол-во BeanDefinition: {}", registry.getBeanDefinitionCount());
-        log.debug("Зарегистрированные имена: {}", Arrays.toString(registry.getBeanDefinitionNames()));
+        log.info("кол-во BeanDefinition: {}", registry.getBeanDefinitionCount());
+        log.info("Зарегистрированные имена: {}", Arrays.toString(registry.getBeanDefinitionNames()));
 
-        log.debug("Второй BDRPP {}: Конец работы", this.getClass().getSimpleName());
-        log.debug("--------------- КОНЕЦ РАБОТЫ BDRPP ---------------");
+        log.info("Второй BDRPP {}: Конец работы", this.getClass().getSimpleName());
+        log.info("--------------- КОНЕЦ РАБОТЫ BDRPP ---------------");
     }
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        log.debug("вызов {}", this.getClass().getSimpleName());
+        log.info("Первый BFPP {}: Начало работы", this.getClass().getSimpleName());
+        log.info("Второй BFPP {}: Конец работы", this.getClass().getSimpleName());
     }
 }
