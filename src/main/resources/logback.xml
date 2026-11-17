@@ -17,6 +17,7 @@
 
     <!-- Управление логированием целых пакетов через переменные -->
     <logger name="io.github.aeyyks.bfpp" level="${log.level.bfpp:-INFO}"/>
+    <logger name="io.github.aeyyks.bpp" level="${log.level.bpp:-INFO}"/>
     <logger name="io.github.aeyyks.event" level="${log.level.event:-INFO}"/>
 
 
